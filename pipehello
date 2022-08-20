@@ -3,8 +3,8 @@ pipeline {
     stages {
       stage ('build') {
         steps {
-               git branch: 'main', url: 'https://github.com/madhavivijay/hello-world-war.git
-               sh '''mvn clean install'''
+               sh '''git branch: 'main', url: 'https://github.com/madhavivijay/hello-world-war.git
+               mvn clean install'''
               }
              }
        stage ('deploy') {
