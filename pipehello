@@ -4,7 +4,8 @@ pipeline {
       stage ('build') {
         steps {
                sh '''git branch: 'main', url: 'https://github.com/madhavivijay/hello-world-war.git
-               mvn clean install'''
+               mvn clean package
+               '''
               }
              }
        stage ('deploy') {
