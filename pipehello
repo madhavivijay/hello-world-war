@@ -10,7 +10,7 @@ pipeline {
       stage('deploy') {
           steps {
             sh '''sudo cp -r /home/ec2-user/workspace/helloparallel/target//hello-world-war.git /home/ec2-user/apache-tomcat-9.0.65/webapps
-            scp -r /home/ec2-user/workspace/helloparallel/target/hello-world-war.gir ec2-user@172.31.13.145:/home/ec2-user'''
+            scp -r /home/ec2-user/workspace/helloparallel/target/hello-world-war.git ec2-user@172.31.13.145:/home/ec2-user'''
           }
       }  
       }
