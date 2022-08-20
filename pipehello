@@ -1,17 +1,17 @@
 pipeline {
-  agent any
+  agent { label 'jslave' }
     stages {
-      stage ('build') {
+      stage('build') {
         steps {
-               sh '''git branch: 'main', url: 'https://github.com/madhavivijay/hello-world-war.git
-               mvn clean package
-               '''
-              }
-             }
-       stage ('deploy') {
-        steps { 
-            echo "this is deploy stage"
-            }
-          }           
-    }
-}
+              git branch: 'master', url: 'https://github.com/madhavivijay/simple.git'
+              sh 'mvn clean package'
+        }
+      }
+      stage('deploy') {
+          steps {
+            sh '''sudo cp -r /home/ec2-user/workspace/helloparallel/target//hello-world-war.git /home/ec2-user/apache-tomcat-9.0.65/webapps
+            scp -r /home/ec2-user/workspace/helloparallel/target/hello-world-war.gir ec2-user@172.31.13.145:/home/ec2-user'''
+          }
+      }  
+      }
+    } 
